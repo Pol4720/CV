@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "title": "Richard Matos | Portfolio",
+    "description": "Professional portfolio of Richard Matos - Final-year Computer Science student. Projects, research, certifications, and more."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "education": "Education",
+    "certifications": "Certifications",
+    "contact": "Contact",
+    "downloadCV": "Download CV"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Richard Matos",
+    "title": "Computer Science Student",
+    "subtitle": "Passionate about artificial intelligence, distributed systems, and high-performance software development.",
+    "cta": "View Projects",
+    "contact": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Get to know me better",
+    "description": "I'm a final-year Computer Science student at the University of Havana (MATCOM). I'm passionate about solving complex problems through technology and constantly learning new tools and methodologies.",
+    "details": {
+      "university": "University of Havana",
+      "faculty": "Faculty of Mathematics and Computer Science (MATCOM)",
+      "degree": "Computer Science",
+      "year": "Final year",
+      "location": "Havana, Cuba"
+    },
+    "interests": {
+      "title": "Areas of Interest",
+      "list": [
+        "Artificial Intelligence and Machine Learning",
+        "Distributed Systems",
+        "Compilers and Programming Languages",
+        "Data Analysis and Big Data",
+        "Software Development"
+      ]
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies and tools I master",
+    "categories": {
+      "languages": "Programming Languages",
+      "frameworks": "Frameworks & Libraries",
+      "tools": "Tools & Technologies",
+      "databases": "Databases",
+      "concepts": "Concepts & Methodologies"
+    }
+  },
+  "languages": {
+    "title": "Languages",
+    "subtitle": "Language proficiency",
+    "spanish": "Spanish",
+    "english": "English",
+    "native": "Native",
+    "levels": {
+      "native": "Native",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "basic": "Basic"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Featured work and contributions",
+    "viewAll": "View All Projects",
+    "viewCode": "View Code",
+    "viewDemo": "View Demo",
+    "featured": "Featured",
+    "technologies": "Technologies used",
+    "categories": {
+      "all": "All",
+      "ai": "AI & ML",
+      "distributed": "Distributed Systems",
+      "compilers": "Compilers",
+      "data": "Data Analysis",
+      "games": "Games",
+      "other": "Other"
+    }
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "My academic journey",
+    "current": "In Progress",
+    "completed": "Completed",
+    "gpa": "GPA",
+    "relevantCourses": "Relevant Courses",
+    "achievements": "Academic Achievements"
+  },
+  "certifications": {
+    "title": "Certifications & Awards",
+    "subtitle": "Achievements and official certificates",
+    "viewCredential": "View Credential",
+    "issuedBy": "Issued by",
+    "date": "Date",
+    "categories": {
+      "academic": "Academic",
+      "professional": "Professional",
+      "events": "Events & Competitions",
+      "courses": "Online Courses"
+    }
+  },
+  "research": {
+    "title": "Research",
+    "subtitle": "Research work and publications",
+    "readMore": "Read more",
+    "authors": "Authors",
+    "abstract": "Abstract"
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": "Certificates and official documents",
+    "viewDocument": "View Document",
+    "download": "Download"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Interested in working together?",
+    "description": "I'm open to new opportunities, collaborations, and interesting projects. Feel free to reach out.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message"
+    },
+    "social": {
+      "title": "Social Media",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "telegram": "Telegram",
+      "email": "Email"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "madeWith": "Made with",
+    "and": "and",
+    "by": "by"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "back": "Back",
+    "viewMore": "View more",
+    "close": "Close"
+  }
+}
