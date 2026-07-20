@@ -1,0 +1,7 @@
+# Local tooling
+.claude/
+.vercel
+
+# Dependencies (safety net; portafolio has its own too)
+**/node_modules/
+**/.next/

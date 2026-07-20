@@ -1,147 +1,98 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useTranslations } from "next-intl"
-import { Card, CardContent } from "@/components/ui/card"
-import { personalInfo } from "@/data/personal"
-import { 
-  MapPin, 
-  GraduationCap, 
-  Building2, 
-  Calendar,
-  Sparkles 
-} from "lucide-react"
+import { useTranslations, useLocale } from "next-intl"
+import { SectionHeading } from "@/components/ui/section-heading"
+import { Reveal } from "@/components/ui/reveal"
+import { languages, researchInterests } from "@/data/skills"
+import { GraduationCap, Building2, FlaskConical, Microscope } from "lucide-react"
 
 export function AboutSection() {
   const t = useTranslations("about")
+  const locale = useLocale() as "es" | "en"
 
-  const details = [
-    { icon: Building2, label: t("details.university"), key: "university" },
-    { icon: GraduationCap, label: t("details.faculty"), key: "faculty" },
-    { icon: Calendar, label: t("details.year"), key: "year" },
-    { icon: MapPin, label: t("details.location"), key: "location" },
+  const facts = [
+    { icon: GraduationCap, label: t("facts.education"), value: t("facts.educationValue") },
+    { icon: Building2, label: t("facts.role"), value: t("facts.roleValue") },
+    { icon: FlaskConical, label: t("facts.focus"), value: t("facts.focusValue") },
+    { icon: Microscope, label: t("facts.field"), value: t("facts.fieldValue") },
   ]
 
-  const interests = t.raw("interests.list") as string[]
-
   return (
-    <section id="about" className="py-20 relative">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              {t("title")}
-            </span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
-        </motion.div>
+    <section id="about" className="relative py-24 sm:py-28">
+      <div className="container mx-auto px-4 sm:px-6">
+        <SectionHeading index="01" eyebrow={t("eyebrow")} title={t("title")} description={t("subtitle")} />
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative w-full max-w-md mx-auto">
-              {/* Decorative Elements */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-20" />
-              
-              {/* Image Container */}
-              <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-white/10 bg-gray-800/50">
-                {/* Placeholder for avatar */}
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-900/50 to-purple-900/50">
-                  <div className="text-center p-8">
-                    <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-5xl font-bold">
-                      {personalInfo.name.charAt(0)}
+        <div className="mt-14 grid lg:grid-cols-12 gap-8">
+          {/* Bio */}
+          <Reveal className="lg:col-span-7">
+            <div className="card p-8 h-full">
+              <p className="font-display text-2xl text-ink leading-snug mb-5">{t("lead")}</p>
+              <p className="text-ink-soft leading-relaxed mb-4">{t("p1")}</p>
+              <p className="text-ink-soft leading-relaxed">{t("p2")}</p>
+
+              <div className="mt-7 grid sm:grid-cols-2 gap-3">
+                {facts.map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="flex items-start gap-3 rounded-2xl bg-sand/60 border border-line-soft p-4">
+                    <span className="mt-0.5 w-9 h-9 rounded-xl bg-paper border border-line flex items-center justify-center shrink-0">
+                      <Icon className="w-[18px] h-[18px] text-sage-deep" />
+                    </span>
+                    <div>
+                      <p className="text-xs eyebrow text-ink-faint">{label}</p>
+                      <p className="text-sm text-ink font-medium mt-1 leading-snug">{value}</p>
                     </div>
-                    <p className="text-gray-400 text-sm">
-                      {/* User will add their photo */}
-                      Agrega tu foto en /public/images/avatar.jpg
-                    </p>
                   </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Interests + Languages */}
+          <div className="lg:col-span-5 flex flex-col gap-8">
+            <Reveal delay={0.1}>
+              <div className="card p-7">
+                <h3 className="font-display text-xl text-ink mb-4">{t("interestsTitle")}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {researchInterests[locale].map((interest) => (
+                    <span
+                      key={interest}
+                      className="px-3.5 py-1.5 rounded-full text-sm bg-sage-soft/60 text-sage-deep border border-sage/30"
+                    >
+                      {interest}
+                    </span>
+                  ))}
                 </div>
               </div>
+            </Reveal>
 
-              {/* Floating Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl px-4 py-2 shadow-xl"
-              >
-                <span className="text-sm font-medium">MATCOM - UH</span>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              {t("description")}
-            </p>
-
-            {/* Details Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              {details.map((detail, index) => (
-                <motion.div
-                  key={detail.key}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
-                  className="flex items-center gap-3 text-gray-300"
-                >
-                  <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400">
-                    <detail.icon className="w-4 h-4" />
-                  </div>
-                  <span className="text-sm">{detail.label}</span>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Interests */}
-            <Card className="bg-gradient-to-br from-blue-900/20 to-purple-900/20">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Sparkles className="w-5 h-5 text-purple-400" />
-                  <h3 className="font-semibold">{t("interests.title")}</h3>
-                </div>
-                <ul className="space-y-2">
-                  {interests.map((interest: string, index: number) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                      className="flex items-center gap-2 text-gray-300"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
-                      {interest}
-                    </motion.li>
+            <Reveal delay={0.2}>
+              <div className="card p-7">
+                <h3 className="font-display text-xl text-ink mb-5">{t("languagesTitle")}</h3>
+                <div className="space-y-5">
+                  {languages.map((lang) => (
+                    <div key={lang.name.en}>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-sm font-medium text-ink flex items-center gap-2">
+                          <span className="text-base">{lang.flag}</span>
+                          {lang.name[locale]}
+                        </span>
+                        <span className="text-xs text-ink-soft">{lang.level[locale]}</span>
+                      </div>
+                      <div className="h-2 rounded-full bg-sand overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${lang.percentage}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] as const }}
+                          className="h-full rounded-full bg-gradient-to-r from-sage to-terracotta"
+                        />
+                      </div>
+                    </div>
                   ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

@@ -4,18 +4,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Navbar, Footer } from "@/components/layout";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { personalInfo } from "@/data/personal";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -27,51 +16,42 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  
+
   const titles = {
-    es: "Richard Matos | Portafolio - Ciencia de la Computación",
-    en: "Richard Matos | Portfolio - Computer Science",
+    es: "Richard A. Matos Arderí | Científico de la Computación",
+    en: "Richard A. Matos Arderí | Computer Scientist",
   };
 
   const descriptions = {
-    es: "Portafolio profesional de Richard Matos - Estudiante de último año de Ciencia de la Computación en MATCOM, Universidad de La Habana. Proyectos, investigaciones, certificaciones y más.",
-    en: "Professional portfolio of Richard Matos - Final-year Computer Science student at MATCOM, University of Havana. Projects, research, certifications, and more.",
+    es: "Científico de la Computación (MATCOM, Universidad de La Habana) especializado en Ciencia de Datos, Machine Learning e IA. Especialista Consultor en el Instituto Finlay de Vacunas. Premio al Mérito Científico. Proyectos, investigaciones, publicaciones y CV.",
+    en: "Computer Scientist (MATCOM, University of Havana) specialized in Data Science, Machine Learning and AI. Consultant Specialist at the Finlay Vaccine Institute. Scientific Merit Award. Projects, research, publications and CV.",
   };
 
+  const title = titles[locale as keyof typeof titles] || titles.es;
+  const description = descriptions[locale as keyof typeof descriptions] || descriptions.es;
+
   return {
-    title: titles[locale as keyof typeof titles] || titles.es,
-    description: descriptions[locale as keyof typeof descriptions] || descriptions.es,
+    metadataBase: new URL("https://richard-matos.vercel.app"),
+    title,
+    description,
     keywords: [
-      "Richard Matos",
-      "Computer Science",
-      "Ciencia de la Computación",
-      "Portfolio",
-      "Portafolio",
-      "MATCOM",
-      "Universidad de La Habana",
-      "Machine Learning",
-      "Distributed Systems",
-      "Compilers",
+      "Richard Matos", "Richard Matos Arderí", "Computer Scientist", "Científico de la Computación",
+      "Data Science", "Machine Learning", "AI", "MATCOM", "Universidad de La Habana",
+      "Instituto Finlay de Vacunas", "BioCubaFarma", "AutoML", "RAG", "Multiagentes",
+      "Portfolio", "Portafolio",
     ],
-    authors: [{ name: "Richard Matos" }],
-    creator: "Richard Matos",
+    authors: [{ name: personalInfo.name }],
+    creator: personalInfo.name,
     openGraph: {
-      type: "website",
+      type: "profile",
       locale: locale === "es" ? "es_ES" : "en_US",
       url: "https://richard-matos.vercel.app",
-      title: titles[locale as keyof typeof titles] || titles.es,
-      description: descriptions[locale as keyof typeof descriptions] || descriptions.es,
-      siteName: "Richard Matos Portfolio",
+      title,
+      description,
+      siteName: "Richard Matos — Portfolio",
     },
-    twitter: {
-      card: "summary_large_image",
-      title: titles[locale as keyof typeof titles] || titles.es,
-      description: descriptions[locale as keyof typeof descriptions] || descriptions.es,
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    twitter: { card: "summary_large_image", title, description },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -92,16 +72,10 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="dark scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-950 text-white min-h-screen`}
-      >
-        <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </NextIntlClientProvider>
   );
 }

@@ -1,157 +1,163 @@
 {
-  "metadata": {
-    "title": "Richard Matos | Portafolio",
-    "description": "Portafolio profesional de Richard Matos - Estudiante de último año de Ciencia de la Computación. Proyectos, investigaciones, certificaciones y más."
-  },
   "nav": {
     "home": "Inicio",
-    "about": "Sobre Mí",
-    "skills": "Habilidades",
+    "about": "Perfil",
+    "experience": "Trayectoria",
     "projects": "Proyectos",
-    "education": "Educación",
-    "certifications": "Certificaciones",
+    "awards": "Premios",
+    "research": "Investigación",
+    "documents": "Documentos",
     "contact": "Contacto",
-    "downloadCV": "Descargar CV"
+    "downloadCV": "Descargar CV",
+    "cvEs": "CV Español",
+    "cvEn": "CV Inglés"
   },
   "hero": {
-    "greeting": "Hola, soy",
-    "name": "Richard Matos",
-    "title": "Estudiante de Ciencia de la Computación",
-    "subtitle": "Apasionado por la inteligencia artificial, sistemas distribuidos y el desarrollo de software de alto rendimiento.",
-    "cta": "Ver Proyectos",
-    "contact": "Contáctame"
+    "badge": "Disponible para nuevas oportunidades",
+    "intro": "Científico de la Computación formado en MATCOM (Universidad de La Habana), especializado en Ciencia de Datos, Machine Learning e IA, con sólida experiencia en desarrollo full-stack aplicado a la salud pública.",
+    "ctaProjects": "Ver proyectos",
+    "ctaContact": "Contáctame",
+    "statusOpen": "Abierto a colaboraciones",
+    "nowTitle": "Actualmente:",
+    "nowBody": "Especialista Consultor en el Instituto Finlay de Vacunas (BioCubaFarma), diseñando plataformas potenciadas por IA."
   },
   "about": {
-    "title": "Sobre Mí",
-    "subtitle": "Conóceme un poco más",
-    "description": "Soy estudiante de último año de Ciencia de la Computación en la Universidad de La Habana (MATCOM). Me apasiona resolver problemas complejos a través de la tecnología y estoy constantemente aprendiendo nuevas herramientas y metodologías.",
-    "details": {
-      "university": "Universidad de La Habana",
-      "faculty": "Facultad de Matemática y Computación (MATCOM)",
-      "degree": "Ciencia de la Computación",
-      "year": "Último año",
-      "location": "La Habana, Cuba"
-    },
-    "interests": {
-      "title": "Áreas de Interés",
-      "list": [
-        "Inteligencia Artificial y Machine Learning",
-        "Sistemas Distribuidos",
-        "Compiladores y Lenguajes de Programación",
-        "Análisis de Datos y Big Data",
-        "Desarrollo de Software"
-      ]
+    "eyebrow": "Perfil",
+    "title": "Sobre mí",
+    "subtitle": "Ciencia, datos e ingeniería al servicio de la salud.",
+    "lead": "Convierto problemas complejos en soluciones de software rigurosas, desde la modelación matemática hasta el producto desplegado.",
+    "p1": "Soy Científico de la Computación formado en la Facultad de Matemática y Computación (MATCOM) de la Universidad de La Habana, especializado en Ciencia de Datos, Aprendizaje Automático e Inteligencia Artificial. Galardonado con el Premio al Mérito Científico por una trayectoria investigativa destacada.",
+    "p2": "Como Especialista Consultor en el Instituto Finlay de Vacunas (BioCubaFarma) diseño plataformas potenciadas por IA —sistemas multiagente, pipelines RAG y flujos AutoML— y desarrollo aplicaciones web, móviles y de escritorio. Llevo los productos de extremo a extremo: de la modelación matemática y de datos al software pulido y desplegado.",
+    "interestsTitle": "Intereses de investigación",
+    "languagesTitle": "Idiomas",
+    "facts": {
+      "education": "Formación",
+      "educationValue": "Lic. en Ciencia de la Computación · MATCOM, UH",
+      "role": "Rol actual",
+      "roleValue": "Especialista Consultor · Instituto Finlay de Vacunas",
+      "focus": "Enfoque",
+      "focusValue": "Ciencia de Datos · ML e IA · Full-Stack",
+      "field": "Dominio",
+      "fieldValue": "IA Biomédica y modelación epidemiológica"
     }
+  },
+  "experience": {
+    "eyebrow": "Trayectoria",
+    "title": "Experiencia y educación",
+    "subtitle": "Recorrido profesional y académico.",
+    "workTitle": "Experiencia profesional",
+    "eduTitle": "Educación",
+    "present": "Presente",
+    "coursesTitle": "Cursos relevantes"
   },
   "skills": {
-    "title": "Habilidades",
-    "subtitle": "Tecnologías y herramientas que domino",
-    "categories": {
-      "languages": "Lenguajes de Programación",
-      "frameworks": "Frameworks & Librerías",
-      "tools": "Herramientas & Tecnologías",
-      "databases": "Bases de Datos",
-      "concepts": "Conceptos & Metodologías"
-    }
-  },
-  "languages": {
-    "title": "Idiomas",
-    "subtitle": "Competencias lingüísticas",
-    "spanish": "Español",
-    "english": "Inglés",
-    "native": "Nativo",
-    "levels": {
-      "native": "Nativo",
-      "advanced": "Avanzado",
-      "intermediate": "Intermedio",
-      "basic": "Básico"
-    }
+    "eyebrow": "Stack",
+    "title": "Habilidades técnicas",
+    "subtitle": "Un ecosistema de herramientas para investigar, modelar y construir."
   },
   "projects": {
+    "eyebrow": "Portafolio",
     "title": "Proyectos",
-    "subtitle": "Trabajos destacados y contribuciones",
-    "viewAll": "Ver Todos los Proyectos",
-    "viewCode": "Ver Código",
-    "viewDemo": "Ver Demo",
+    "subtitle": "Trabajo profesional reservado y repositorios de código abierto.",
     "featured": "Destacado",
-    "technologies": "Tecnologías utilizadas",
+    "viewCode": "Ver código",
+    "viewAll": "Ver todo en GitHub",
+    "reserved": "Reservado",
+    "privateNote": "Proyectos desarrollados en contextos profesionales e institucionales. Se presentan a alto nivel, sin exponer el código fuente.",
+    "tabs": {
+      "public": "Públicos",
+      "private": "Profesionales"
+    },
+    "status": {
+      "completed": "Completado",
+      "in-progress": "En curso"
+    },
     "categories": {
-      "all": "Todos",
       "ai": "IA & ML",
-      "distributed": "Sistemas Distribuidos",
+      "data": "Datos",
+      "health": "Salud",
+      "distributed": "Distribuidos",
       "compilers": "Compiladores",
-      "data": "Análisis de Datos",
+      "simulation": "Simulación",
+      "web": "Web",
       "games": "Juegos",
       "other": "Otros"
     }
   },
-  "education": {
-    "title": "Educación",
-    "subtitle": "Mi trayectoria académica",
-    "current": "En curso",
-    "completed": "Completado",
-    "gpa": "Promedio",
-    "relevantCourses": "Cursos Relevantes",
-    "achievements": "Logros Académicos"
-  },
-  "certifications": {
-    "title": "Certificaciones y Reconocimientos",
-    "subtitle": "Logros y certificados oficiales",
-    "viewCredential": "Ver Credencial",
-    "issuedBy": "Emitido por",
-    "date": "Fecha",
-    "categories": {
-      "academic": "Académico",
-      "professional": "Profesional",
-      "events": "Eventos y Competencias",
-      "courses": "Cursos Online"
-    }
+  "awards": {
+    "eyebrow": "Reconocimientos",
+    "title": "Premios y distinciones",
+    "subtitle": "Reconocimientos a la excelencia académica y científica.",
+    "featured": "Principal"
   },
   "research": {
-    "title": "Investigaciones",
-    "subtitle": "Trabajos de investigación y publicaciones",
-    "readMore": "Leer más",
-    "authors": "Autores",
-    "abstract": "Resumen"
+    "eyebrow": "Ciencia",
+    "title": "Investigación y publicaciones",
+    "subtitle": "Ponencias en congresos y proyectos de investigación activos.",
+    "publicationsTitle": "Contribuciones a congresos",
+    "projectsTitle": "Proyectos de investigación"
   },
   "documents": {
-    "title": "Documentos",
-    "subtitle": "Certificados y documentos oficiales",
-    "viewDocument": "Ver Documento",
-    "download": "Descargar"
+    "eyebrow": "Documentación",
+    "title": "Documentos y credenciales",
+    "subtitle": "Descarga mi CV y consulta certificados, diplomas y constancias.",
+    "cvLabel": "Currículum Vitae",
+    "cvEs": "CV en Español",
+    "cvEn": "CV en Inglés",
+    "view": "Ver",
+    "download": "Descargar",
+    "empty": "No hay documentos en esta categoría por ahora.",
+    "adminHint": "Los documentos se gestionan desde el panel de administración."
   },
   "contact": {
-    "title": "Contacto",
-    "subtitle": "¿Interesado en trabajar juntos?",
-    "description": "Estoy abierto a nuevas oportunidades, colaboraciones y proyectos interesantes. No dudes en contactarme.",
+    "eyebrow": "Contacto",
+    "title": "Trabajemos juntos",
+    "subtitle": "¿Tienes una oportunidad, colaboración o proyecto en mente?",
+    "description": "Estoy abierto a nuevas oportunidades profesionales, colaboraciones de investigación y proyectos con impacto. Escríbeme por cualquiera de estos canales.",
+    "mailSubject": "Contacto desde el portafolio",
     "form": {
       "name": "Nombre",
-      "email": "Correo Electrónico",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo electrónico",
       "message": "Mensaje",
-      "send": "Enviar Mensaje",
-      "sending": "Enviando...",
-      "success": "¡Mensaje enviado con éxito!",
-      "error": "Error al enviar el mensaje"
-    },
-    "social": {
-      "title": "Redes Sociales",
-      "github": "GitHub",
-      "linkedin": "LinkedIn",
-      "telegram": "Telegram",
-      "email": "Email"
+      "messagePlaceholder": "Cuéntame en qué puedo ayudarte...",
+      "send": "Enviar mensaje"
     }
   },
   "footer": {
+    "blurb": "Científico de la Computación especializado en Ciencia de Datos, ML e IA aplicados a la salud pública.",
+    "navTitle": "Navegación",
+    "contactTitle": "Contacto",
+    "adminAccess": "Acceso administrador",
     "rights": "Todos los derechos reservados",
-    "madeWith": "Hecho con",
-    "and": "y",
-    "by": "por"
+    "madeWith": "Hecho con"
   },
-  "common": {
-    "loading": "Cargando...",
-    "error": "Error",
-    "back": "Volver",
-    "viewMore": "Ver más",
-    "close": "Cerrar"
+  "admin": {
+    "title": "Panel de administración",
+    "subtitle": "Gestiona los documentos visibles en el portafolio.",
+    "passwordLabel": "Contraseña de administrador",
+    "passwordPlaceholder": "Introduce tu contraseña",
+    "login": "Entrar",
+    "logout": "Cerrar sesión",
+    "wrongPassword": "Contraseña incorrecta.",
+    "backHome": "Volver al inicio",
+    "uploadTitle": "Subir documento",
+    "docTitleEs": "Título (Español)",
+    "docTitleEn": "Título (Inglés)",
+    "issuerEs": "Emisor (Español)",
+    "issuerEn": "Emisor (Inglés)",
+    "category": "Categoría",
+    "date": "Fecha",
+    "file": "Archivo (PDF o imagen)",
+    "upload": "Subir documento",
+    "uploading": "Subiendo...",
+    "uploadSuccess": "Documento subido correctamente.",
+    "uploadError": "Error al subir el documento.",
+    "manageTitle": "Documentos subidos",
+    "delete": "Eliminar",
+    "noUploads": "Aún no hay documentos subidos desde el panel.",
+    "notConfiguredTitle": "Almacenamiento no configurado",
+    "notConfigured": "Para habilitar la subida de documentos configura una tienda de Vercel Blob y las variables de entorno ADMIN_PASSWORD y BLOB_READ_WRITE_TOKEN en tu despliegue.",
+    "confirmDelete": "¿Eliminar este documento?"
   }
 }

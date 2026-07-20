@@ -1,42 +1,59 @@
 export interface PersonalInfo {
   name: string;
-  title: {
-    es: string;
-    en: string;
-  };
+  shortName: string;
+  initials: string;
+  title: { es: string; en: string };
+  tagline: { es: string; en: string };
   email: string;
-  location: {
-    es: string;
-    en: string;
-  };
+  phone: string;
+  location: { es: string; en: string };
   social: {
     github: string;
-    linkedin?: string;
+    linkedin: string;
     telegram: string;
-    twitter?: string;
+    email: string;
   };
   avatar: string;
-  resumeEs: string;
-  resumeEn: string;
+  resume: {
+    es: string;
+    en: string;
+  };
+  stats: {
+    value: string;
+    label: { es: string; en: string };
+  }[];
 }
 
 export const personalInfo: PersonalInfo = {
-  name: 'Richard Matos',
+  name: "Richard A. Matos Arderí",
+  shortName: "Richard Matos",
+  initials: "RM",
   title: {
-    es: 'Estudiante de Ciencia de la Computación',
-    en: 'Computer Science Student'
+    es: "Científico de la Computación",
+    en: "Computer Scientist",
   },
-  email: '', // El usuario agregará su email
-  location: {
-    es: 'La Habana, Cuba',
-    en: 'Havana, Cuba'
+  tagline: {
+    es: "Ciencia de Datos · Machine Learning e IA · Desarrollador Full-Stack",
+    en: "Data Science · Machine Learning & AI · Full-Stack Developer",
   },
+  email: "matosrichard58@gmail.com",
+  phone: "+53 5825 8556",
+  location: { es: "La Habana, Cuba", en: "Havana, Cuba" },
   social: {
-    github: 'https://github.com/Pol4720',
-    telegram: 'https://t.me/Pol4720',
-    linkedin: '', // El usuario agregará su LinkedIn
+    github: "https://github.com/Pol4720",
+    linkedin: "https://www.linkedin.com/in/richard-matos-arderí",
+    telegram: "https://t.me/Pol4720",
+    email: "mailto:matosrichard58@gmail.com",
   },
-  avatar: '/images/avatar.jpg', // El usuario agregará su foto
-  resumeEs: '/documents/cv-es.pdf',
-  resumeEn: '/documents/cv-en.pdf'
+  avatar: "/images/avatar.jpg",
+  resume: {
+    es: "/documents/cv/cv-es.pdf",
+    en: "/documents/cv/cv-en.pdf",
+  },
+  stats: [
+    { value: "4.71", label: { es: "Índice académico / 5.00", en: "Academic GPA / 5.00" } },
+    { value: "6+", label: { es: "Publicaciones y ponencias", en: "Publications & talks" } },
+    { value: "3", label: { es: "Premios y distinciones", en: "Awards & distinctions" } },
+    { value: "15+", label: { es: "Proyectos de software", en: "Software projects" } },
+  ],
 };

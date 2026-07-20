@@ -1,79 +1,106 @@
-export interface Skill {
-  name: string;
-  icon?: string;
-  level: number; // 0-100
-  category: 'languages' | 'frameworks' | 'tools' | 'databases' | 'concepts';
+export type SkillCategory =
+  | "languages"
+  | "datascience"
+  | "ai"
+  | "modeling"
+  | "web"
+  | "mobile"
+  | "data"
+  | "bigdata"
+  | "devops"
+  | "qa";
+
+export interface SkillGroup {
+  category: SkillCategory;
+  label: { es: string; en: string };
+  accent: "sage" | "terracotta" | "gold" | "lavender" | "sky";
+  skills: string[];
 }
 
-export const skills: Skill[] = [
-  // Programming Languages
-  { name: 'Python', level: 95, category: 'languages' },
-  { name: 'Rust', level: 80, category: 'languages' },
-  { name: 'Haskell', level: 75, category: 'languages' },
-  { name: 'JavaScript/TypeScript', level: 85, category: 'languages' },
-  { name: 'C/C++', level: 70, category: 'languages' },
-  { name: 'SQL', level: 80, category: 'languages' },
-  { name: 'LaTeX', level: 85, category: 'languages' },
-
-  // Frameworks & Libraries
-  { name: 'Scikit-learn', level: 85, category: 'frameworks' },
-  { name: 'Pandas', level: 90, category: 'frameworks' },
-  { name: 'NumPy', level: 90, category: 'frameworks' },
-  { name: 'Matplotlib/Seaborn', level: 85, category: 'frameworks' },
-  { name: 'TensorFlow/PyTorch', level: 70, category: 'frameworks' },
-  { name: 'React/Next.js', level: 75, category: 'frameworks' },
-  { name: 'Hadoop/MapReduce', level: 75, category: 'frameworks' },
-
-  // Tools & Technologies
-  { name: 'Git/GitHub', level: 95, category: 'tools' },
-  { name: 'Linux', level: 85, category: 'tools' },
-  { name: 'Docker', level: 70, category: 'tools' },
-  { name: 'Jupyter Notebooks', level: 95, category: 'tools' },
-  { name: 'VS Code', level: 90, category: 'tools' },
-
-  // Databases
-  { name: 'PostgreSQL', level: 80, category: 'databases' },
-  { name: 'MySQL', level: 75, category: 'databases' },
-  { name: 'MongoDB', level: 65, category: 'databases' },
-
-  // Concepts & Methodologies
-  { name: 'Machine Learning', level: 85, category: 'concepts' },
-  { name: 'Data Analysis', level: 90, category: 'concepts' },
-  { name: 'Distributed Systems', level: 80, category: 'concepts' },
-  { name: 'Compiler Design', level: 80, category: 'concepts' },
-  { name: 'Algorithms & Data Structures', level: 90, category: 'concepts' },
-  { name: 'Functional Programming', level: 80, category: 'concepts' },
-  { name: 'Statistics', level: 85, category: 'concepts' },
+export const skillGroups: SkillGroup[] = [
+  {
+    category: "languages",
+    label: { es: "Lenguajes de Programación", en: "Programming Languages" },
+    accent: "sage",
+    skills: ["Python", "Rust", "TypeScript / JavaScript", "C", "C++", "C#", "R", "Haskell", "Prolog", "SQL", "LaTeX"],
+  },
+  {
+    category: "datascience",
+    label: { es: "Ciencia de Datos & ML", en: "Data Science & ML" },
+    accent: "terracotta",
+    skills: ["scikit-learn", "PyTorch", "TensorFlow", "XGBoost", "LightGBM", "CatBoost", "SHAP", "LIME", "MLflow", "NumPy", "Pandas", "SciPy", "SymPy"],
+  },
+  {
+    category: "ai",
+    label: { es: "IA / Agentes / NLP", en: "AI / Agents / NLP" },
+    accent: "lavender",
+    skills: ["LangChain", "LangGraph", "RAG", "Sistemas multiagente", "AutoML (FLAML)", "n8n", "HuggingFace", "Ollama", "ChromaDB", "SPARQL (rdflib)"],
+  },
+  {
+    category: "modeling",
+    label: { es: "Modelación & Simulación", en: "Modeling & Simulation" },
+    accent: "sky",
+    skills: ["Modelos EDO / SEIR", "Modelado basado en agentes (Mesa)", "Autómatas celulares", "Cadenas de Markov (CTMC)", "Metaheurísticas (GA, SA, Tabú, GRASP)", "Análisis de sensibilidad (SALib / Sobol)"],
+  },
+  {
+    category: "web",
+    label: { es: "Web & Full-Stack", en: "Web & Full-Stack" },
+    accent: "sage",
+    skills: ["React", "Next.js", "Node.js", "FastAPI", "Django", "Tailwind CSS", "REST APIs", "WebSockets"],
+  },
+  {
+    category: "mobile",
+    label: { es: "Móvil & Escritorio", en: "Mobile & Desktop" },
+    accent: "gold",
+    skills: ["Flutter", "Android", "iOS", "React Native", "Electron", "Tauri"],
+  },
+  {
+    category: "data",
+    label: { es: "Bases de Datos", en: "Databases" },
+    accent: "terracotta",
+    skills: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "Redis", "SQLAlchemy / Alembic"],
+  },
+  {
+    category: "bigdata",
+    label: { es: "Big Data & Distribuidos", en: "Big Data & Distributed" },
+    accent: "sky",
+    skills: ["Hadoop", "HDFS", "PySpark", "Celery", "Redis", "Crawling e indexación distribuida"],
+  },
+  {
+    category: "devops",
+    label: { es: "DevOps & Herramientas", en: "DevOps & Tools" },
+    accent: "lavender",
+    skills: ["Docker", "Docker Compose", "Git", "GitHub Actions (CI/CD)", "CodeQL", "Linux"],
+  },
+  {
+    category: "qa",
+    label: { es: "QA & Testing", en: "QA & Testing" },
+    accent: "gold",
+    skills: ["pytest", "unittest", "Selenium", "Cypress", "Playwright", "Postman", "JMeter", "TDD", "SonarQube", "ruff / black / mypy"],
+  },
 ];
 
-export const getSkillsByCategory = (category: Skill['category']): Skill[] => {
-  return skills.filter(s => s.category === category);
-};
-
 export interface Language {
-  name: {
-    es: string;
-    en: string;
-  };
-  level: {
-    es: string;
-    en: string;
-  };
+  name: { es: string; en: string };
+  level: { es: string; en: string };
   percentage: number;
-  flag?: string;
+  flag: string;
 }
 
 export const languages: Language[] = [
-  {
-    name: { es: 'Español', en: 'Spanish' },
-    level: { es: 'Nativo', en: 'Native' },
-    percentage: 100,
-    flag: '🇪🇸'
-  },
-  {
-    name: { es: 'Inglés', en: 'English' },
-    level: { es: 'Avanzado', en: 'Advanced' },
-    percentage: 85,
-    flag: '🇬🇧'
-  }
+  { name: { es: "Español", en: "Spanish" }, level: { es: "Nativo", en: "Native" }, percentage: 100, flag: "🇨🇺" },
+  { name: { es: "Inglés", en: "English" }, level: { es: "C1 · Avanzado", en: "C1 · Advanced" }, percentage: 85, flag: "🇬🇧" },
+  { name: { es: "Francés", en: "French" }, level: { es: "A2 · Básico", en: "A2 · Basic" }, percentage: 35, flag: "🇫🇷" },
 ];
+
+/* Highlighted tech for the hero marquee */
+export const marqueeTech: string[] = [
+  "Python", "Rust", "TypeScript", "PyTorch", "scikit-learn", "LangGraph", "RAG",
+  "AutoML", "FastAPI", "Next.js", "PySpark", "Hadoop", "Docker", "PostgreSQL",
+  "SHAP", "Mesa", "SEIR", "Haskell",
+];
+
+export const researchInterests = {
+  es: ["IA Biomédica", "Modelación Epidemiológica", "Desarrollo de Vacunas", "Biología Matemática", "Sistemas Distribuidos"],
+  en: ["Biomedical AI", "Epidemiological Modeling", "Vaccine Development", "Mathematical Biology", "Distributed Systems"],
+};

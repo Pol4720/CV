@@ -1,207 +1,108 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useTranslations } from "next-intl"
-import { Card, CardContent } from "@/components/ui/card"
+import { useState } from "react"
+import { useLocale, useTranslations } from "next-intl"
+import { SectionHeading } from "@/components/ui/section-heading"
+import { Reveal } from "@/components/ui/reveal"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { personalInfo } from "@/data/personal"
-import { 
-  Send, 
-  Github, 
-  Linkedin,
-  Mail,
-  MapPin,
-  ArrowUpRight
-} from "lucide-react"
+import { Mail, Github, Linkedin, Send, MapPin, ArrowUpRight } from "lucide-react"
 
 export function ContactSection() {
   const t = useTranslations("contact")
+  const locale = useLocale() as "es" | "en"
+  const [form, setForm] = useState({ name: "", email: "", message: "" })
 
-  const socialLinks = [
-    {
-      name: "GitHub",
-      icon: Github,
-      url: personalInfo.social.github,
-      color: "hover:bg-gray-800"
-    },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      url: personalInfo.social.linkedin || "#",
-      color: "hover:bg-blue-600"
-    },
-    {
-      name: "Telegram",
-      icon: Send,
-      url: personalInfo.social.telegram,
-      color: "hover:bg-sky-500"
-    },
-    {
-      name: "Email",
-      icon: Mail,
-      url: personalInfo.email ? `mailto:${personalInfo.email}` : "#",
-      color: "hover:bg-red-500"
-    }
+  const channels = [
+    { icon: Mail, label: "Email", value: personalInfo.email, href: personalInfo.social.email },
+    { icon: Linkedin, label: "LinkedIn", value: "richard-matos-arderí", href: personalInfo.social.linkedin },
+    { icon: Github, label: "GitHub", value: "Pol4720", href: personalInfo.social.github },
+    { icon: Send, label: "Telegram", value: "@Pol4720", href: personalInfo.social.telegram },
   ]
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const subject = encodeURIComponent(`${t("mailSubject")} — ${form.name}`)
+    const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`)
+    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`
+  }
+
   return (
-    <section id="contact" className="py-20 relative">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />
-      </div>
+    <section id="contact" className="relative py-24 sm:py-28 overflow-hidden">
+      <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full bg-sage-soft/40 blur-3xl -z-10" />
+      <div className="container mx-auto px-4 sm:px-6">
+        <SectionHeading index="08" eyebrow={t("eyebrow")} title={t("title")} description={t("subtitle")} />
 
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              {t("title")}
-            </span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Card className="h-full bg-gradient-to-br from-blue-900/20 to-purple-900/20">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold mb-6">{t("description")}</h3>
-                
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400">Location</p>
-                      <p className="font-medium">La Habana, Cuba</p>
-                    </div>
-                  </div>
-                  
-                  {personalInfo.email && (
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400">
-                        <Mail className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-400">Email</p>
-                        <a 
-                          href={`mailto:${personalInfo.email}`}
-                          className="font-medium hover:text-blue-400 transition-colors"
-                        >
-                          {personalInfo.email}
-                        </a>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div>
-                  <h4 className="font-semibold mb-4">{t("social.title")}</h4>
-                  <div className="flex gap-3">
-                    {socialLinks.map((social) => (
-                      <motion.a
-                        key={social.name}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`p-3 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 ${social.color}`}
-                      >
-                        <social.icon className="w-5 h-5" />
-                      </motion.a>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Decorative Element */}
-                <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-sm text-gray-400">
-                      {/* User can customize */}
-                      Disponible para oportunidades
+        <div className="mt-14 grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Channels */}
+          <Reveal>
+            <div className="card p-8 h-full flex flex-col">
+              <p className="text-ink-soft leading-relaxed mb-6">{t("description")}</p>
+              <div className="space-y-3 flex-1">
+                {channels.map(({ icon: Icon, label, value, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={label === "Email" ? undefined : "_blank"}
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 rounded-2xl border border-line bg-sand/50 p-4 hover:border-sage hover:bg-sage-soft/30 transition-all"
+                  >
+                    <span className="w-11 h-11 rounded-xl bg-paper border border-line flex items-center justify-center shrink-0 group-hover:border-sage transition-colors">
+                      <Icon className="w-5 h-5 text-sage-deep" />
                     </span>
-                  </div>
-                  <p className="text-sm text-gray-500">
-                    Actualmente buscando prácticas profesionales y proyectos interesantes.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs eyebrow text-ink-faint">{label}</p>
+                      <p className="text-sm text-ink font-medium truncate">{value}</p>
+                    </div>
+                    <ArrowUpRight className="w-4 h-4 text-ink-faint group-hover:text-sage-deep transition-colors" />
+                  </a>
+                ))}
+              </div>
+              <div className="mt-6 flex items-center gap-2 text-sm text-ink-soft">
+                <MapPin className="w-4 h-4 text-sage" /> {personalInfo.location[locale]}
+              </div>
+            </div>
+          </Reveal>
 
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Card className="h-full">
-              <CardContent className="p-8">
-                <form className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      {t("form.name")}
-                    </label>
-                    <Input 
-                      type="text" 
-                      placeholder={t("form.name")}
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      {t("form.email")}
-                    </label>
-                    <Input 
-                      type="email" 
-                      placeholder="your@email.com"
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      {t("form.message")}
-                    </label>
-                    <Textarea 
-                      placeholder={t("form.message")}
-                      className="w-full min-h-[150px]"
-                    />
-                  </div>
-                  
-                  <Button type="submit" size="lg" className="w-full">
-                    {t("form.send")}
-                    <ArrowUpRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </form>
-
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  * El formulario requiere configuración de backend (Resend, Formspree, etc.)
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
+          {/* Form */}
+          <Reveal delay={0.1}>
+            <form onSubmit={handleSubmit} className="card p-8 h-full flex flex-col gap-4">
+              <div>
+                <label className="text-sm font-medium text-ink mb-1.5 block">{t("form.name")}</label>
+                <input
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="w-full rounded-xl border border-line bg-sand/40 px-4 py-3 text-ink placeholder:text-ink-faint focus:border-sage focus:bg-paper outline-none transition-colors"
+                  placeholder={t("form.namePlaceholder")}
+                />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-ink mb-1.5 block">{t("form.email")}</label>
+                <input
+                  required
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className="w-full rounded-xl border border-line bg-sand/40 px-4 py-3 text-ink placeholder:text-ink-faint focus:border-sage focus:bg-paper outline-none transition-colors"
+                  placeholder="you@email.com"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <label className="text-sm font-medium text-ink mb-1.5 block">{t("form.message")}</label>
+                <textarea
+                  required
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className="w-full flex-1 min-h-32 rounded-xl border border-line bg-sand/40 px-4 py-3 text-ink placeholder:text-ink-faint focus:border-sage focus:bg-paper outline-none transition-colors resize-none"
+                  placeholder={t("form.messagePlaceholder")}
+                />
+              </div>
+              <Button type="submit" size="lg" className="w-full">
+                <Send className="w-4 h-4" /> {t("form.send")}
+              </Button>
+            </form>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -4,25 +4,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl hover:scale-105",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        default:
+          "bg-sage-deep text-white shadow-[0_8px_20px_-8px_rgba(85,128,95,0.7)] hover:bg-[#4a7255] hover:shadow-[0_12px_28px_-10px_rgba(85,128,95,0.8)] hover:-translate-y-0.5",
+        terracotta:
+          "bg-terracotta-deep text-white shadow-[0_8px_20px_-8px_rgba(176,106,76,0.6)] hover:bg-[#9c5c40] hover:-translate-y-0.5",
         outline:
-          "border-2 border-blue-500/50 bg-transparent hover:bg-blue-500/10 hover:border-blue-500 text-foreground",
+          "border border-line bg-paper/70 text-ink backdrop-blur-sm hover:border-sage hover:text-sage-deep hover:-translate-y-0.5",
         secondary:
-          "bg-white/10 text-foreground backdrop-blur-sm border border-white/20 hover:bg-white/20",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-sand text-ink border border-line hover:bg-[#eae0cf] hover:-translate-y-0.5",
+        ghost: "text-ink hover:bg-sand",
+        link: "text-sage-deep underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-10 px-5 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-12 rounded-xl px-8 text-base",
-        icon: "h-10 w-10",
+        default: "h-11 px-6 py-2",
+        sm: "h-9 px-4 text-[0.8rem]",
+        lg: "h-13 px-8 text-base",
+        icon: "h-11 w-11",
       },
     },
     defaultVariants: {
@@ -42,11 +43,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
+      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
     )
   }
 )

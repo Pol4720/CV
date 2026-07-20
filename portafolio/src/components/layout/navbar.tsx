@@ -3,22 +3,19 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTranslations, useLocale } from "next-intl"
-import { Link, usePathname, useRouter } from "@/i18n/navigation"
+import { usePathname, useRouter } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { personalInfo } from "@/data/personal"
-import { 
-  Menu, 
-  X, 
-  Download,
-  Globe
-} from "lucide-react"
+import { Menu, X, Download, Languages, Github, Linkedin, ChevronDown } from "lucide-react"
 
 const navItems = [
   { key: "home", href: "#home" },
   { key: "about", href: "#about" },
-  { key: "skills", href: "#skills" },
+  { key: "experience", href: "#experience" },
   { key: "projects", href: "#projects" },
-  { key: "education", href: "#education" },
+  { key: "awards", href: "#awards" },
+  { key: "research", href: "#research" },
+  { key: "documents", href: "#documents" },
   { key: "contact", href: "#contact" },
 ]
 
@@ -29,80 +26,129 @@ export function Navbar() {
   const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [cvOpen, setCvOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 40)
+    handleScroll()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const toggleLocale = () => {
-    const newLocale = locale === 'es' ? 'en' : 'es'
-    router.push(pathname, { locale: newLocale })
+    router.push(pathname, { locale: locale === "es" ? "en" : "es" })
   }
-
-  const cvUrl = locale === 'es' ? personalInfo.resumeEs : personalInfo.resumeEn
 
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
+        initial={{ y: -80 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? "bg-gray-900/80 backdrop-blur-lg border-b border-white/10 shadow-lg" 
-            : "bg-transparent"
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+          isScrolled ? "glass shadow-[0_6px_24px_-16px_rgba(120,100,70,0.5)]" : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="#home" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center font-bold text-lg">
-                RM
-              </div>
-              <span className="font-semibold hidden sm:block">Richard Matos</span>
-            </Link>
+            <a href="#home" className="flex items-center gap-2.5 group">
+              <span className="w-10 h-10 rounded-2xl bg-sage-deep text-white flex items-center justify-center font-display font-semibold text-lg group-hover:bg-terracotta-deep transition-colors duration-500">
+                {personalInfo.initials}
+              </span>
+              <span className="font-display font-semibold text-ink hidden sm:block">
+                {personalInfo.shortName}
+              </span>
+            </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            {/* Desktop nav */}
+            <div className="hidden xl:flex items-center gap-0.5">
               {navItems.map((item) => (
                 <a
                   key={item.key}
                   href={item.href}
-                  className="px-4 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
+                  className="px-3.5 py-2 rounded-full text-sm text-ink-soft hover:text-ink hover:bg-sand transition-all duration-300"
                 >
                   {t(item.key)}
                 </a>
               ))}
             </div>
 
-            {/* Right Side Actions */}
-            <div className="flex items-center gap-2">
-              {/* Language Toggle */}
+            {/* Actions */}
+            <div className="flex items-center gap-1.5">
+              <a
+                href={personalInfo.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="hidden sm:flex p-2 rounded-full text-ink-soft hover:text-ink hover:bg-sand transition-colors"
+              >
+                <Github className="w-[18px] h-[18px]" />
+              </a>
+              <a
+                href={personalInfo.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="hidden sm:flex p-2 rounded-full text-ink-soft hover:text-ink hover:bg-sand transition-colors"
+              >
+                <Linkedin className="w-[18px] h-[18px]" />
+              </a>
+
               <button
                 onClick={toggleLocale}
-                className="p-2 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2"
+                className="p-2 rounded-full text-ink-soft hover:text-ink hover:bg-sand transition-colors flex items-center gap-1.5"
+                aria-label="Toggle language"
               >
-                <Globe className="w-4 h-4" />
-                <span className="text-sm uppercase">{locale === 'es' ? 'EN' : 'ES'}</span>
+                <Languages className="w-[18px] h-[18px]" />
+                <span className="text-xs font-semibold uppercase">{locale === "es" ? "EN" : "ES"}</span>
               </button>
 
-              {/* Download CV Button */}
-              <Button variant="default" size="sm" asChild className="hidden sm:flex">
-                <a href={cvUrl} download>
+              {/* CV dropdown */}
+              <div
+                className="relative hidden sm:block"
+                onMouseEnter={() => setCvOpen(true)}
+                onMouseLeave={() => setCvOpen(false)}
+              >
+                <Button size="sm" className="pr-3">
                   <Download className="w-4 h-4" />
                   <span className="hidden md:inline">{t("downloadCV")}</span>
-                </a>
-              </Button>
+                  <ChevronDown className="w-3.5 h-3.5 opacity-80" />
+                </Button>
+                <AnimatePresence>
+                  {cvOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute right-0 top-full pt-2 w-44"
+                    >
+                      <div className="card p-1.5 overflow-hidden">
+                        <a
+                          href={personalInfo.resume.es}
+                          download
+                          className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-ink hover:bg-sand transition-colors"
+                        >
+                          🇪🇸 {t("cvEs")}
+                        </a>
+                        <a
+                          href={personalInfo.resume.en}
+                          download
+                          className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-ink hover:bg-sand transition-colors"
+                        >
+                          🇬🇧 {t("cvEn")}
+                        </a>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-              {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+                className="xl:hidden p-2 rounded-full text-ink hover:bg-sand transition-colors"
+                aria-label="Menu"
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -111,37 +157,41 @@ export function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 lg:hidden"
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.22 }}
+            className="fixed inset-x-0 top-16 z-40 xl:hidden px-3"
           >
-            <div className="bg-gray-900/95 backdrop-blur-lg border-b border-white/10 shadow-xl">
-              <div className="container mx-auto px-4 py-4">
-                <div className="flex flex-col gap-2">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.key}
-                      href={item.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="px-4 py-3 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
-                    >
-                      {t(item.key)}
-                    </a>
-                  ))}
-                  <hr className="border-white/10 my-2" />
-                  <Button variant="default" size="sm" asChild className="w-full">
-                    <a href={cvUrl} download>
-                      <Download className="w-4 h-4" />
-                      {t("downloadCV")}
-                    </a>
-                  </Button>
-                </div>
+            <div className="card p-3">
+              <div className="grid grid-cols-2 gap-1">
+                {navItems.map((item) => (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="px-4 py-3 rounded-xl text-sm text-ink-soft hover:text-ink hover:bg-sand transition-colors"
+                  >
+                    {t(item.key)}
+                  </a>
+                ))}
+              </div>
+              <div className="h-px bg-line my-3" />
+              <div className="flex gap-2">
+                <Button size="sm" asChild className="flex-1">
+                  <a href={personalInfo.resume.es} download>
+                    <Download className="w-4 h-4" /> {t("cvEs")}
+                  </a>
+                </Button>
+                <Button size="sm" variant="secondary" asChild className="flex-1">
+                  <a href={personalInfo.resume.en} download>
+                    <Download className="w-4 h-4" /> {t("cvEn")}
+                  </a>
+                </Button>
               </div>
             </div>
           </motion.div>

@@ -1,157 +1,163 @@
 {
-  "metadata": {
-    "title": "Richard Matos | Portfolio",
-    "description": "Professional portfolio of Richard Matos - Final-year Computer Science student. Projects, research, certifications, and more."
-  },
   "nav": {
     "home": "Home",
-    "about": "About",
-    "skills": "Skills",
+    "about": "Profile",
+    "experience": "Journey",
     "projects": "Projects",
-    "education": "Education",
-    "certifications": "Certifications",
+    "awards": "Awards",
+    "research": "Research",
+    "documents": "Documents",
     "contact": "Contact",
-    "downloadCV": "Download CV"
+    "downloadCV": "Download CV",
+    "cvEs": "Spanish CV",
+    "cvEn": "English CV"
   },
   "hero": {
-    "greeting": "Hi, I'm",
-    "name": "Richard Matos",
-    "title": "Computer Science Student",
-    "subtitle": "Passionate about artificial intelligence, distributed systems, and high-performance software development.",
-    "cta": "View Projects",
-    "contact": "Contact Me"
+    "badge": "Available for new opportunities",
+    "intro": "Computer Scientist trained at MATCOM (University of Havana), specialized in Data Science, Machine Learning and AI, with solid full-stack experience applied to public health.",
+    "ctaProjects": "View projects",
+    "ctaContact": "Get in touch",
+    "statusOpen": "Open to collaboration",
+    "nowTitle": "Currently:",
+    "nowBody": "Consultant Specialist at the Finlay Vaccine Institute (BioCubaFarma), designing AI-powered platforms."
   },
   "about": {
-    "title": "About Me",
-    "subtitle": "Get to know me better",
-    "description": "I'm a final-year Computer Science student at the University of Havana (MATCOM). I'm passionate about solving complex problems through technology and constantly learning new tools and methodologies.",
-    "details": {
-      "university": "University of Havana",
-      "faculty": "Faculty of Mathematics and Computer Science (MATCOM)",
-      "degree": "Computer Science",
-      "year": "Final year",
-      "location": "Havana, Cuba"
-    },
-    "interests": {
-      "title": "Areas of Interest",
-      "list": [
-        "Artificial Intelligence and Machine Learning",
-        "Distributed Systems",
-        "Compilers and Programming Languages",
-        "Data Analysis and Big Data",
-        "Software Development"
-      ]
+    "eyebrow": "Profile",
+    "title": "About me",
+    "subtitle": "Science, data and engineering in the service of health.",
+    "lead": "I turn complex problems into rigorous software solutions — from mathematical modeling to a deployed product.",
+    "p1": "I am a Computer Scientist trained at the Faculty of Mathematics & Computer Science (MATCOM), University of Havana, specialized in Data Science, Machine Learning and Artificial Intelligence. Awarded the Scientific Merit Award for an outstanding research trajectory.",
+    "p2": "As a Consultant Specialist at the Finlay Vaccine Institute (BioCubaFarma) I design AI-powered platforms —multi-agent systems, RAG pipelines and AutoML flows— and build web, mobile and desktop applications. I take products end to end: from mathematical and data modeling to polished, deployed software.",
+    "interestsTitle": "Research interests",
+    "languagesTitle": "Languages",
+    "facts": {
+      "education": "Education",
+      "educationValue": "B.Sc. in Computer Science · MATCOM, UH",
+      "role": "Current role",
+      "roleValue": "Consultant Specialist · Finlay Vaccine Institute",
+      "focus": "Focus",
+      "focusValue": "Data Science · ML & AI · Full-Stack",
+      "field": "Domain",
+      "fieldValue": "Biomedical AI and epidemiological modeling"
     }
+  },
+  "experience": {
+    "eyebrow": "Journey",
+    "title": "Experience & education",
+    "subtitle": "Professional and academic path.",
+    "workTitle": "Professional experience",
+    "eduTitle": "Education",
+    "present": "Present",
+    "coursesTitle": "Relevant courses"
   },
   "skills": {
-    "title": "Skills",
-    "subtitle": "Technologies and tools I master",
-    "categories": {
-      "languages": "Programming Languages",
-      "frameworks": "Frameworks & Libraries",
-      "tools": "Tools & Technologies",
-      "databases": "Databases",
-      "concepts": "Concepts & Methodologies"
-    }
-  },
-  "languages": {
-    "title": "Languages",
-    "subtitle": "Language proficiency",
-    "spanish": "Spanish",
-    "english": "English",
-    "native": "Native",
-    "levels": {
-      "native": "Native",
-      "advanced": "Advanced",
-      "intermediate": "Intermediate",
-      "basic": "Basic"
-    }
+    "eyebrow": "Stack",
+    "title": "Technical skills",
+    "subtitle": "An ecosystem of tools to research, model and build."
   },
   "projects": {
+    "eyebrow": "Portfolio",
     "title": "Projects",
-    "subtitle": "Featured work and contributions",
-    "viewAll": "View All Projects",
-    "viewCode": "View Code",
-    "viewDemo": "View Demo",
+    "subtitle": "Reserved professional work and open-source repositories.",
     "featured": "Featured",
-    "technologies": "Technologies used",
+    "viewCode": "View code",
+    "viewAll": "See all on GitHub",
+    "reserved": "Reserved",
+    "privateNote": "Projects developed in professional and institutional contexts. Shown at a high level, without exposing source code.",
+    "tabs": {
+      "public": "Public",
+      "private": "Professional"
+    },
+    "status": {
+      "completed": "Completed",
+      "in-progress": "In progress"
+    },
     "categories": {
-      "all": "All",
       "ai": "AI & ML",
-      "distributed": "Distributed Systems",
+      "data": "Data",
+      "health": "Health",
+      "distributed": "Distributed",
       "compilers": "Compilers",
-      "data": "Data Analysis",
+      "simulation": "Simulation",
+      "web": "Web",
       "games": "Games",
       "other": "Other"
     }
   },
-  "education": {
-    "title": "Education",
-    "subtitle": "My academic journey",
-    "current": "In Progress",
-    "completed": "Completed",
-    "gpa": "GPA",
-    "relevantCourses": "Relevant Courses",
-    "achievements": "Academic Achievements"
-  },
-  "certifications": {
-    "title": "Certifications & Awards",
-    "subtitle": "Achievements and official certificates",
-    "viewCredential": "View Credential",
-    "issuedBy": "Issued by",
-    "date": "Date",
-    "categories": {
-      "academic": "Academic",
-      "professional": "Professional",
-      "events": "Events & Competitions",
-      "courses": "Online Courses"
-    }
+  "awards": {
+    "eyebrow": "Recognition",
+    "title": "Awards & distinctions",
+    "subtitle": "Recognition of academic and scientific excellence.",
+    "featured": "Highlight"
   },
   "research": {
-    "title": "Research",
-    "subtitle": "Research work and publications",
-    "readMore": "Read more",
-    "authors": "Authors",
-    "abstract": "Abstract"
+    "eyebrow": "Science",
+    "title": "Research & publications",
+    "subtitle": "Conference talks and active research projects.",
+    "publicationsTitle": "Conference contributions",
+    "projectsTitle": "Research projects"
   },
   "documents": {
-    "title": "Documents",
-    "subtitle": "Certificates and official documents",
-    "viewDocument": "View Document",
-    "download": "Download"
+    "eyebrow": "Documentation",
+    "title": "Documents & credentials",
+    "subtitle": "Download my CV and browse certificates, diplomas and records.",
+    "cvLabel": "Curriculum Vitae",
+    "cvEs": "CV in Spanish",
+    "cvEn": "CV in English",
+    "view": "View",
+    "download": "Download",
+    "empty": "No documents in this category yet.",
+    "adminHint": "Documents are managed from the admin panel."
   },
   "contact": {
-    "title": "Contact",
-    "subtitle": "Interested in working together?",
-    "description": "I'm open to new opportunities, collaborations, and interesting projects. Feel free to reach out.",
+    "eyebrow": "Contact",
+    "title": "Let's work together",
+    "subtitle": "Have an opportunity, collaboration or project in mind?",
+    "description": "I am open to new professional opportunities, research collaborations and impactful projects. Reach me through any of these channels.",
+    "mailSubject": "Portfolio contact",
     "form": {
       "name": "Name",
+      "namePlaceholder": "Your name",
       "email": "Email",
       "message": "Message",
-      "send": "Send Message",
-      "sending": "Sending...",
-      "success": "Message sent successfully!",
-      "error": "Error sending message"
-    },
-    "social": {
-      "title": "Social Media",
-      "github": "GitHub",
-      "linkedin": "LinkedIn",
-      "telegram": "Telegram",
-      "email": "Email"
+      "messagePlaceholder": "Tell me how I can help...",
+      "send": "Send message"
     }
   },
   "footer": {
+    "blurb": "Computer Scientist specialized in Data Science, ML and AI applied to public health.",
+    "navTitle": "Navigation",
+    "contactTitle": "Contact",
+    "adminAccess": "Admin access",
     "rights": "All rights reserved",
-    "madeWith": "Made with",
-    "and": "and",
-    "by": "by"
+    "madeWith": "Made with"
   },
-  "common": {
-    "loading": "Loading...",
-    "error": "Error",
-    "back": "Back",
-    "viewMore": "View more",
-    "close": "Close"
+  "admin": {
+    "title": "Admin panel",
+    "subtitle": "Manage the documents shown on the portfolio.",
+    "passwordLabel": "Admin password",
+    "passwordPlaceholder": "Enter your password",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "wrongPassword": "Incorrect password.",
+    "backHome": "Back to home",
+    "uploadTitle": "Upload document",
+    "docTitleEs": "Title (Spanish)",
+    "docTitleEn": "Title (English)",
+    "issuerEs": "Issuer (Spanish)",
+    "issuerEn": "Issuer (English)",
+    "category": "Category",
+    "date": "Date",
+    "file": "File (PDF or image)",
+    "upload": "Upload document",
+    "uploading": "Uploading...",
+    "uploadSuccess": "Document uploaded successfully.",
+    "uploadError": "Error uploading the document.",
+    "manageTitle": "Uploaded documents",
+    "delete": "Delete",
+    "noUploads": "No documents uploaded from the panel yet.",
+    "notConfiguredTitle": "Storage not configured",
+    "notConfigured": "To enable document uploads, set up a Vercel Blob store and the ADMIN_PASSWORD and BLOB_READ_WRITE_TOKEN environment variables in your deployment.",
+    "confirmDelete": "Delete this document?"
   }
 }
