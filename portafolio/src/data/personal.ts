@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/base-path";
+
 export interface PersonalInfo {
   name: string;
   shortName: string;
@@ -41,14 +43,14 @@ export const personalInfo: PersonalInfo = {
   location: { es: "La Habana, Cuba", en: "Havana, Cuba" },
   social: {
     github: "https://github.com/Pol4720",
-    linkedin: "https://www.linkedin.com/in/richard-matos-arderí",
+    linkedin: "https://www.linkedin.com/in/richard-matos-arderí-8912643ba",
     telegram: "https://t.me/Pol4720",
     email: "mailto:matosrichard58@gmail.com",
   },
-  avatar: "/images/avatar.jpg",
+  avatar: withBasePath("/images/avatar.jpg"),
   resume: {
-    es: "/documents/cv/cv-es.pdf",
-    en: "/documents/cv/cv-en.pdf",
+    es: withBasePath("/documents/cv/cv-es.pdf"),
+    en: withBasePath("/documents/cv/cv-en.pdf"),
   },
   stats: [
     { value: "4.71", label: { es: "Índice académico / 5.00", en: "Academic GPA / 5.00" } },

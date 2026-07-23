@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Navbar, Footer } from "@/components/layout";
@@ -30,8 +30,10 @@ export async function generateMetadata({
   const title = titles[locale as keyof typeof titles] || titles.es;
   const description = descriptions[locale as keyof typeof descriptions] || descriptions.es;
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pol4720.github.io/CV";
+
   return {
-    metadataBase: new URL("https://richard-matos.vercel.app"),
+    metadataBase: new URL(siteUrl),
     title,
     description,
     keywords: [
@@ -45,7 +47,7 @@ export async function generateMetadata({
     openGraph: {
       type: "profile",
       locale: locale === "es" ? "es_ES" : "en_US",
-      url: "https://richard-matos.vercel.app",
+      url: siteUrl,
       title,
       description,
       siteName: "Richard Matos — Portfolio",
@@ -69,6 +71,7 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react"
 import { useLocale, useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { docCategories, type DocItem, type DocCategory } from "@/data/documents"
 import {
@@ -26,14 +27,22 @@ export default function AdminPage() {
   const [docs, setDocs] = useState<DocItem[]>([])
 
   const refreshStatus = useCallback(async () => {
-    const r = await fetch("/api/admin/status", { cache: "no-store" })
-    setStatus(await r.json())
+    try {
+      const r = await fetch("/api/admin/status", { cache: "no-store" })
+      setStatus(await r.json())
+    } catch {
+      setStatus({ adminConfigured: false, blobConfigured: false, authenticated: false })
+    }
   }, [])
 
   const refreshDocs = useCallback(async () => {
-    const r = await fetch("/api/documents", { cache: "no-store" })
-    const d = await r.json()
-    setDocs(d.documents ?? [])
+    try {
+      const r = await fetch("/api/documents", { cache: "no-store" })
+      const d = await r.json()
+      setDocs(d.documents ?? [])
+    } catch {
+      setDocs([])
+    }
   }, [])
 
   useEffect(() => {
@@ -67,9 +76,9 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen pt-28 pb-20">
       <div className="container mx-auto px-4 sm:px-6 max-w-3xl">
-        <a href={`/${locale}`} className="inline-flex items-center gap-2 text-sm text-ink-soft hover:text-ink transition-colors mb-6">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm text-ink-soft hover:text-ink transition-colors mb-6">
           <ArrowLeft className="w-4 h-4" /> {t("backHome")}
-        </a>
+        </Link>
 
         <div className="flex items-center gap-3 mb-2">
           <span className="w-11 h-11 rounded-2xl bg-sage-deep text-white flex items-center justify-center">

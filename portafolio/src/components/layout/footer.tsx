@@ -1,8 +1,11 @@
 "use client"
 
 import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 import { personalInfo } from "@/data/personal"
 import { Github, Linkedin, Send, Mail, Heart } from "lucide-react"
+
+const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true"
 
 const navLinks = [
   { key: "about", href: "#about" },
@@ -75,9 +78,11 @@ export function Footer() {
               {personalInfo.email}
             </a>
             <p className="text-sm text-ink-soft">{personalInfo.phone}</p>
-            <a href={`/es/admin`} className="mt-4 inline-block text-xs text-ink-faint hover:text-ink transition-colors">
-              {t("adminAccess")}
-            </a>
+            {!isStaticExport && (
+              <Link href="/admin" className="mt-4 inline-block text-xs text-ink-faint hover:text-ink transition-colors">
+                {t("adminAccess")}
+              </Link>
+            )}
           </div>
         </div>
 

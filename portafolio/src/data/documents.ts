@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/base-path";
+
 export type DocCategory = "diploma" | "certificate" | "letter" | "award" | "other";
 export type DocType = "pdf" | "image";
 
@@ -35,7 +37,7 @@ export const staticDocuments: DocItem[] = [
     issuer: { es: "Evento BIOQUIM 2025", en: "BIOQUIM 2025 Event" },
     category: "diploma",
     type: "pdf",
-    file: "/documents/certificates/events/Diploma BioQuim 2025 App web.pdf",
+    file: withBasePath("/documents/certificates/events/Diploma BioQuim 2025 App web.pdf"),
     date: "2025",
   },
   {
@@ -47,7 +49,7 @@ export const staticDocuments: DocItem[] = [
     issuer: { es: "Evento BIOQUIM 2025", en: "BIOQUIM 2025 Event" },
     category: "diploma",
     type: "pdf",
-    file: "/documents/certificates/events/Diploma BioQuim 2025 Modelos ML.pdf",
+    file: withBasePath("/documents/certificates/events/Diploma BioQuim 2025 Modelos ML.pdf"),
     date: "2025",
   },
   {
@@ -59,7 +61,7 @@ export const staticDocuments: DocItem[] = [
     issuer: { es: "Instituto Finlay de Vacunas", en: "Finlay Vaccine Institute" },
     category: "letter",
     type: "pdf",
-    file: "/documents/letters/carta_finlay_ecosistema_datos.pdf",
+    file: withBasePath("/documents/letters/carta_finlay_ecosistema_datos.pdf"),
     date: "2025",
   },
 ];
