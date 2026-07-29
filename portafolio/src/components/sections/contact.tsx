@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/section-heading"
 import { Reveal } from "@/components/ui/reveal"
 import { Button } from "@/components/ui/button"
 import { personalInfo } from "@/data/personal"
-import { Mail, Github, Linkedin, Send, MapPin, ArrowUpRight } from "lucide-react"
+import { Mail, Github, Linkedin, Send, MapPin, ArrowUpRight, MessageCircle, Phone } from "lucide-react"
 
 export function ContactSection() {
   const t = useTranslations("contact")
@@ -14,7 +14,9 @@ export function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" })
 
   const channels = [
-    { icon: Mail, label: "Email", value: personalInfo.email, href: personalInfo.social.email },
+    { icon: Mail, label: "Email", value: personalInfo.email, href: personalInfo.social.email, internal: true },
+    { icon: MessageCircle, label: "WhatsApp", value: personalInfo.phone, href: personalInfo.social.whatsapp },
+    { icon: Phone, label: t("phone"), value: personalInfo.phone, href: personalInfo.social.phone, internal: true },
     { icon: Linkedin, label: "LinkedIn", value: "richard-matos-arderí", href: personalInfo.social.linkedin },
     { icon: Github, label: "GitHub", value: "Pol4720", href: personalInfo.social.github },
     { icon: Send, label: "Telegram", value: "@Pol4720", href: personalInfo.social.telegram },
@@ -39,11 +41,11 @@ export function ContactSection() {
             <div className="card p-8 h-full flex flex-col">
               <p className="text-ink-soft leading-relaxed mb-6">{t("description")}</p>
               <div className="space-y-3 flex-1">
-                {channels.map(({ icon: Icon, label, value, href }) => (
+                {channels.map(({ icon: Icon, label, value, href, internal }) => (
                   <a
                     key={label}
                     href={href}
-                    target={label === "Email" ? undefined : "_blank"}
+                    target={internal ? undefined : "_blank"}
                     rel="noopener noreferrer"
                     className="group flex items-center gap-4 rounded-2xl border border-line bg-sand/50 p-4 hover:border-sage hover:bg-sage-soft/30 transition-all"
                   >

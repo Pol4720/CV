@@ -1,0 +1,4 @@
+{
+  "$comment": "Documents uploaded from the admin panel (/es/admin). Files live under public/documents/. Edited by the admin UI through the GitHub Contents API.",
+  "documents": []
+}

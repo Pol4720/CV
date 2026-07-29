@@ -58,7 +58,7 @@
   "projects": {
     "eyebrow": "Portafolio",
     "title": "Proyectos",
-    "subtitle": "Trabajo profesional reservado y repositorios de código abierto.",
+    "subtitle": "Trabajo profesional reservado y repositorios públicos, propios y en equipo.",
     "featured": "Destacado",
     "viewCode": "Ver código",
     "viewAll": "Ver todo en GitHub",
@@ -81,8 +81,11 @@
       "simulation": "Simulación",
       "web": "Web",
       "games": "Juegos",
-      "other": "Otros"
-    }
+      "other": "Otros",
+      "systems": "Sistemas"
+    },
+    "viewDetail": "Ver detalle",
+    "commits": "commits"
   },
   "awards": {
     "eyebrow": "Reconocimientos",
@@ -122,7 +125,8 @@
       "message": "Mensaje",
       "messagePlaceholder": "Cuéntame en qué puedo ayudarte...",
       "send": "Enviar mensaje"
-    }
+    },
+    "phone": "Teléfono"
   },
   "footer": {
     "blurb": "Científico de la Computación especializado en Ciencia de Datos, ML e IA aplicados a la salud pública.",
@@ -132,32 +136,22 @@
     "rights": "Todos los derechos reservados",
     "madeWith": "Hecho con"
   },
-  "admin": {
-    "title": "Panel de administración",
-    "subtitle": "Gestiona los documentos visibles en el portafolio.",
-    "passwordLabel": "Contraseña de administrador",
-    "passwordPlaceholder": "Introduce tu contraseña",
-    "login": "Entrar",
-    "logout": "Cerrar sesión",
-    "wrongPassword": "Contraseña incorrecta.",
-    "backHome": "Volver al inicio",
-    "uploadTitle": "Subir documento",
-    "docTitleEs": "Título (Español)",
-    "docTitleEn": "Título (Inglés)",
-    "issuerEs": "Emisor (Español)",
-    "issuerEn": "Emisor (Inglés)",
-    "category": "Categoría",
-    "date": "Fecha",
-    "file": "Archivo (PDF o imagen)",
-    "upload": "Subir documento",
-    "uploading": "Subiendo...",
-    "uploadSuccess": "Documento subido correctamente.",
-    "uploadError": "Error al subir el documento.",
-    "manageTitle": "Documentos subidos",
-    "delete": "Eliminar",
-    "noUploads": "Aún no hay documentos subidos desde el panel.",
-    "notConfiguredTitle": "Almacenamiento no configurado",
-    "notConfigured": "Para habilitar la subida de documentos configura una tienda de Vercel Blob y las variables de entorno ADMIN_PASSWORD y BLOB_READ_WRITE_TOKEN en tu despliegue.",
-    "confirmDelete": "¿Eliminar este documento?"
+  "projectDetail": {
+    "back": "Volver a proyectos",
+    "overview": "Sobre el proyecto",
+    "gallery": "Capturas",
+    "features": "Funcionalidades clave",
+    "architecture": "Arquitectura",
+    "stack": "Tecnologías",
+    "team": "Equipo",
+    "role": "Mi rol",
+    "contribution": "Mi aporte",
+    "viewCode": "Ver código en GitHub",
+    "viewDemo": "Ver demo",
+    "privateNote": "Proyecto reservado",
+    "commits": "commits míos",
+    "course": "Asignatura",
+    "you": "yo",
+    "noGallery": "Aún no hay capturas publicadas de este proyecto. Se añadirán desde el panel de administración."
   }
 }

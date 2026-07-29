@@ -58,7 +58,7 @@
   "projects": {
     "eyebrow": "Portfolio",
     "title": "Projects",
-    "subtitle": "Reserved professional work and open-source repositories.",
+    "subtitle": "Reserved professional work and public repositories, solo and team-built.",
     "featured": "Featured",
     "viewCode": "View code",
     "viewAll": "See all on GitHub",
@@ -81,8 +81,11 @@
       "simulation": "Simulation",
       "web": "Web",
       "games": "Games",
-      "other": "Other"
-    }
+      "other": "Other",
+      "systems": "Systems"
+    },
+    "viewDetail": "View detail",
+    "commits": "commits"
   },
   "awards": {
     "eyebrow": "Recognition",
@@ -122,7 +125,8 @@
       "message": "Message",
       "messagePlaceholder": "Tell me how I can help...",
       "send": "Send message"
-    }
+    },
+    "phone": "Phone"
   },
   "footer": {
     "blurb": "Computer Scientist specialized in Data Science, ML and AI applied to public health.",
@@ -132,32 +136,22 @@
     "rights": "All rights reserved",
     "madeWith": "Made with"
   },
-  "admin": {
-    "title": "Admin panel",
-    "subtitle": "Manage the documents shown on the portfolio.",
-    "passwordLabel": "Admin password",
-    "passwordPlaceholder": "Enter your password",
-    "login": "Sign in",
-    "logout": "Sign out",
-    "wrongPassword": "Incorrect password.",
-    "backHome": "Back to home",
-    "uploadTitle": "Upload document",
-    "docTitleEs": "Title (Spanish)",
-    "docTitleEn": "Title (English)",
-    "issuerEs": "Issuer (Spanish)",
-    "issuerEn": "Issuer (English)",
-    "category": "Category",
-    "date": "Date",
-    "file": "File (PDF or image)",
-    "upload": "Upload document",
-    "uploading": "Uploading...",
-    "uploadSuccess": "Document uploaded successfully.",
-    "uploadError": "Error uploading the document.",
-    "manageTitle": "Uploaded documents",
-    "delete": "Delete",
-    "noUploads": "No documents uploaded from the panel yet.",
-    "notConfiguredTitle": "Storage not configured",
-    "notConfigured": "To enable document uploads, set up a Vercel Blob store and the ADMIN_PASSWORD and BLOB_READ_WRITE_TOKEN environment variables in your deployment.",
-    "confirmDelete": "Delete this document?"
+  "projectDetail": {
+    "back": "Back to projects",
+    "overview": "About the project",
+    "gallery": "Screenshots",
+    "features": "Key features",
+    "architecture": "Architecture",
+    "stack": "Tech stack",
+    "team": "Team",
+    "role": "My role",
+    "contribution": "My contribution",
+    "viewCode": "View code on GitHub",
+    "viewDemo": "View demo",
+    "privateNote": "Reserved project",
+    "commits": "commits by me",
+    "course": "Course",
+    "you": "me",
+    "noGallery": "No screenshots published for this project yet. They will be added from the admin panel."
   }
 }

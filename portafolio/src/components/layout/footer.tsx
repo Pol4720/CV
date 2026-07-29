@@ -5,7 +5,6 @@ import { Link } from "@/i18n/navigation"
 import { personalInfo } from "@/data/personal"
 import { Github, Linkedin, Send, Mail, Heart } from "lucide-react"
 
-const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true"
 
 const navLinks = [
   { key: "about", href: "#about" },
@@ -77,12 +76,17 @@ export function Footer() {
             <a href={personalInfo.social.email} className="block text-sm text-ink-soft hover:text-sage-deep transition-colors mb-2">
               {personalInfo.email}
             </a>
-            <p className="text-sm text-ink-soft">{personalInfo.phone}</p>
-            {!isStaticExport && (
-              <Link href="/admin" className="mt-4 inline-block text-xs text-ink-faint hover:text-ink transition-colors">
-                {t("adminAccess")}
-              </Link>
-            )}
+            <a
+              href={personalInfo.social.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-sm text-ink-soft hover:text-sage-deep transition-colors"
+            >
+              {personalInfo.phone} · WhatsApp
+            </a>
+            <Link href="/admin" className="mt-4 inline-block text-xs text-ink-faint hover:text-ink transition-colors">
+              {t("adminAccess")}
+            </Link>
           </div>
         </div>
 

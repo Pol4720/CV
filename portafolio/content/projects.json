@@ -1,0 +1,4 @@
+{
+  "$comment": "Extended project content managed from the admin panel (/es/admin). Keys under `overrides` are project slugs; uploaded gallery images are appended to the curated ones defined in src/data/projects.ts.",
+  "overrides": {}
+}

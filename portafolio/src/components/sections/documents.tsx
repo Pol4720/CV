@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useState } from "react"
 import { useLocale, useTranslations } from "next-intl"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Reveal } from "@/components/ui/reveal"
-import { staticDocuments, docCategories, type DocItem, type DocCategory } from "@/data/documents"
+import { staticDocuments, docCategories, type DocCategory } from "@/data/documents"
 import { personalInfo } from "@/data/personal"
 import { FileText, Image as ImageIcon, Download, Eye, FileDown, ShieldCheck } from "lucide-react"
 
@@ -19,20 +19,12 @@ const catColor: Record<string, string> = {
 export function DocumentsSection() {
   const t = useTranslations("documents")
   const locale = useLocale() as "es" | "en"
-  const [uploaded, setUploaded] = useState<DocItem[]>([])
   const [filter, setFilter] = useState<DocCategory | "all">("all")
 
-  useEffect(() => {
-    let active = true
-    fetch("/api/documents")
-      .then((r) => (r.ok ? r.json() : { documents: [] }))
-      .then((d) => { if (active) setUploaded(d.documents ?? []) })
-      .catch(() => {})
-    return () => { active = false }
-  }, [])
-
-  const allDocs = useMemo(() => [...uploaded, ...staticDocuments], [uploaded])
-  const filtered = filter === "all" ? allDocs : allDocs.filter((d) => d.category === filter)
+  // Documents uploaded from the admin panel are baked into the build,
+  // so the list is already complete on first paint.
+  const filtered =
+    filter === "all" ? staticDocuments : staticDocuments.filter((d) => d.category === filter)
 
   return (
     <section id="documents" className="relative py-24 sm:py-28 bg-sand/40 border-y border-line-soft">

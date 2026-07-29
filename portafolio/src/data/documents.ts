@@ -1,4 +1,5 @@
 import { withBasePath } from "@/lib/base-path";
+import documentContent from "../../content/documents.json";
 
 export type DocCategory = "diploma" | "certificate" | "letter" | "award" | "other";
 export type DocType = "pdf" | "image";
@@ -25,9 +26,8 @@ export const docCategories: {
   { key: "other", label: { es: "Otros", en: "Other" } },
 ];
 
-/* Baseline documents bundled with the site.
-   Additional documents uploaded from the admin panel are merged at runtime. */
-export const staticDocuments: DocItem[] = [
+/* Baseline documents committed alongside the code. */
+const bundledDocuments: DocItem[] = [
   {
     id: "diploma-bioquim-web",
     title: {
@@ -65,3 +65,12 @@ export const staticDocuments: DocItem[] = [
     date: "2025",
   },
 ];
+
+/* Documents uploaded from the admin panel. They are committed to
+   `content/documents.json`, so they are part of the static build — no
+   runtime fetch, no server. */
+const uploadedDocuments: DocItem[] = (
+  (documentContent as { documents?: DocItem[] }).documents ?? []
+).map((d) => ({ ...d, file: withBasePath(d.file) }));
+
+export const staticDocuments: DocItem[] = [...bundledDocuments, ...uploadedDocuments];

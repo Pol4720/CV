@@ -3,10 +3,14 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useLocale, useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Reveal } from "@/components/ui/reveal"
-import { publicProjects, privateProjects, type Project } from "@/data/projects"
-import { Github, Lock, Star, ArrowUpRight, Building2, Sparkles } from "lucide-react"
+import { getPublicProjects, getPrivateProjects, type Project } from "@/data/projects"
+import {
+  Github, Lock, Star, ArrowUpRight, Building2, Sparkles,
+  GitCommitHorizontal, Images, ArrowRight,
+} from "lucide-react"
 
 const catAccent: Record<string, string> = {
   ai: "bg-lavender-soft/60 text-[#6a5a94]",
@@ -17,84 +21,114 @@ const catAccent: Record<string, string> = {
   simulation: "bg-sky-soft/60 text-[#4a7799]",
   web: "bg-sage-soft/60 text-sage-deep",
   games: "bg-terracotta-soft/60 text-terracotta-deep",
+  systems: "bg-lavender-soft/60 text-[#6a5a94]",
   other: "bg-sand text-ink-soft",
 }
 
 function ProjectCard({ project, locale, index }: { project: Project; locale: "es" | "en"; index: number }) {
   const t = useTranslations("projects")
   const isPrivate = project.visibility === "private"
+  const cover = project.gallery?.[0]
 
   return (
     <Reveal delay={(index % 3) * 0.06}>
-      <div className="card card-hover p-6 h-full flex flex-col group">
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${catAccent[project.category]}`}>
-              {t(`categories.${project.category}`)}
-            </span>
-            {project.featured && (
-              <span className="text-xs font-medium px-2 py-1 rounded-full bg-gold-soft/70 text-[#94741f] inline-flex items-center gap-1">
-                <Star className="w-3 h-3" /> {t("featured")}
-              </span>
-            )}
+      <Link
+        href={`/projects/${project.slug}`}
+        className="card card-hover h-full flex flex-col group overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-sage"
+      >
+        {cover && (
+          <div className="aspect-[16/9] overflow-hidden bg-sand border-b border-line-soft">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={cover.src}
+              alt=""
+              loading="lazy"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            />
           </div>
-          <span className="text-xs text-ink-faint font-mono shrink-0">{project.year}</span>
-        </div>
-
-        <h3 className="font-display text-xl text-ink flex items-center gap-2">
-          {project.title[locale]}
-          {isPrivate && <Lock className="w-3.5 h-3.5 text-ink-faint" />}
-        </h3>
-
-        {project.organization && (
-          <p className="mt-1 text-xs text-terracotta-deep inline-flex items-center gap-1">
-            <Building2 className="w-3.5 h-3.5" /> {project.organization}
-          </p>
         )}
 
-        <p className="mt-3 text-sm text-ink-soft leading-relaxed flex-1">{project.description[locale]}</p>
+        <div className="p-6 flex flex-col flex-1">
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${catAccent[project.category]}`}>
+                {t(`categories.${project.category}`)}
+              </span>
+              {project.featured && (
+                <span className="text-xs font-medium px-2 py-1 rounded-full bg-gold-soft/70 text-[#94741f] inline-flex items-center gap-1">
+                  <Star className="w-3 h-3" /> {t("featured")}
+                </span>
+              )}
+            </div>
+            <span className="text-xs text-ink-faint font-mono shrink-0">{project.year}</span>
+          </div>
 
-        {project.metrics && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {project.metrics.map((m, i) => (
-              <span key={i} className="text-xs px-2.5 py-1 rounded-full bg-sage-soft/50 text-sage-deep border border-sage/20 inline-flex items-center gap-1">
-                <Sparkles className="w-3 h-3" /> {m[locale]}
+          <h3 className="font-display text-xl text-ink flex items-center gap-2">
+            {project.title[locale]}
+            {isPrivate && <Lock className="w-3.5 h-3.5 text-ink-faint" />}
+          </h3>
+
+          {project.organization && (
+            <p className="mt-1 text-xs text-terracotta-deep inline-flex items-center gap-1">
+              <Building2 className="w-3.5 h-3.5" /> {project.organization}
+            </p>
+          )}
+
+          <p className="mt-3 text-sm text-ink-soft leading-relaxed flex-1">{project.description[locale]}</p>
+
+          {project.metrics && (
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {project.metrics.map((m, i) => (
+                <span key={i} className="text-xs px-2.5 py-1 rounded-full bg-sage-soft/50 text-sage-deep border border-sage/20 inline-flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" /> {m[locale]}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {project.technologies.slice(0, 5).map((tech) => (
+              <span key={tech} className="text-xs px-2.5 py-1 rounded-lg bg-sand text-ink-soft border border-line">
+                {tech}
               </span>
             ))}
           </div>
-        )}
 
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {project.technologies.slice(0, 6).map((tech) => (
-            <span key={tech} className="text-xs px-2.5 py-1 rounded-lg bg-sand text-ink-soft border border-line">
-              {tech}
+          {/* Signals that make a repo verifiable at a glance */}
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-faint">
+            {typeof project.commits === "number" && (
+              <span className="inline-flex items-center gap-1">
+                <GitCommitHorizontal className="w-3.5 h-3.5" /> {project.commits} {t("commits")}
+              </span>
+            )}
+            {project.gallery && project.gallery.length > 0 && (
+              <span className="inline-flex items-center gap-1">
+                <Images className="w-3.5 h-3.5" /> {project.gallery.length}
+              </span>
+            )}
+          </div>
+
+          <div className="mt-5 pt-4 border-t border-line-soft flex items-center justify-between">
+            <span className="text-sm font-medium text-sage-deep inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+              {t("viewDetail")}
+              <ArrowRight className="w-4 h-4" />
             </span>
-          ))}
-        </div>
 
-        <div className="mt-5 pt-4 border-t border-line-soft flex items-center justify-between">
-          <span className={`text-xs font-medium inline-flex items-center gap-1.5 ${project.status === "completed" ? "text-sage-deep" : "text-terracotta-deep"}`}>
-            <span className={`w-1.5 h-1.5 rounded-full ${project.status === "completed" ? "bg-sage-deep" : "bg-terracotta-deep animate-pulse"}`} />
-            {t(`status.${project.status}`)}
-          </span>
-
-          {isPrivate ? (
-            <span className="text-xs text-ink-faint inline-flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5" /> {t("reserved")}
-            </span>
-          ) : (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-sage-deep inline-flex items-center gap-1 hover:gap-2 transition-all"
-            >
-              <Github className="w-4 h-4" /> {t("viewCode")}
-              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
-          )}
+            {!isPrivate && project.github && (
+              <span
+                role="link"
+                tabIndex={0}
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(project.github, "_blank", "noopener") }}
+                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); window.open(project.github, "_blank", "noopener") } }}
+                className="text-xs text-ink-faint hover:text-ink inline-flex items-center gap-1 cursor-pointer"
+              >
+                <Github className="w-3.5 h-3.5" /> GitHub
+                <ArrowUpRight className="w-3 h-3" />
+              </span>
+            )}
+          </div>
         </div>
-      </div>
+      </Link>
     </Reveal>
   )
 }
@@ -104,6 +138,8 @@ export function ProjectsSection() {
   const locale = useLocale() as "es" | "en"
   const [tab, setTab] = useState<"public" | "private">("public")
 
+  const publicProjects = getPublicProjects()
+  const privateProjects = getPrivateProjects()
   const list = tab === "public" ? publicProjects : privateProjects
 
   return (
