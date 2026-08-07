@@ -6,7 +6,8 @@ import { useTranslations, useLocale } from "next-intl"
 import { usePathname, useRouter } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { personalInfo } from "@/data/personal"
-import { Menu, X, Download, Languages, Github, Linkedin, ChevronDown } from "lucide-react"
+import { Menu, X, Download, Languages, Github, ChevronDown } from "lucide-react"
+import { LinkedInIcon } from "@/components/icons/linkedin-icon"
 
 const navItems = [
   { key: "home", href: "#home" },
@@ -92,7 +93,7 @@ export function Navbar() {
                 aria-label="LinkedIn"
                 className="hidden sm:flex p-2 rounded-full text-ink-soft hover:text-ink hover:bg-sand transition-colors"
               >
-                <Linkedin className="w-[18px] h-[18px]" />
+                <LinkedInIcon className="w-[18px] h-[18px]" />
               </a>
 
               <button

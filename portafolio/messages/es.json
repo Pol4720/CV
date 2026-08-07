@@ -126,7 +126,8 @@
       "messagePlaceholder": "Cuéntame en qué puedo ayudarte...",
       "send": "Enviar mensaje"
     },
-    "phone": "Teléfono"
+    "phone": "Teléfono",
+    "viewProfile": "Ver perfil"
   },
   "footer": {
     "blurb": "Científico de la Computación especializado en Ciencia de Datos, ML e IA aplicados a la salud pública.",

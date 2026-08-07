@@ -1,6 +1,27 @@
 # CV en PDF / PDF Resume
 
-Esta carpeta contiene los Curriculum Vitae en formato PDF.
+Esta carpeta contiene los Curriculum Vitae en formato PDF:
+
+- `CV_Richard_Matos.pdf` — versión en inglés
+- `CV-Richard Matos.pdf` — versión en español
+
+Se generan con **texto real y seleccionable** (no curvas/outlines), en 2 páginas,
+mediante el generador en [`generator/`](generator/) — así el contenido es
+100% copiable (Ctrl+C/Ctrl+V) y pasa correctamente por parsers de ATS y LinkedIn.
+Las mismas copias se publican en `portafolio/public/documents/cv/cv-en.pdf` y
+`cv-es.pdf`, desde donde las sirve el sitio (GitHub Pages).
+
+## Actualizar el contenido del CV
+
+1. Edita los datos en [`generator/content.mjs`](generator/content.mjs) (EN/ES).
+2. Ajusta el diseño si hace falta en [`generator/template.mjs`](generator/template.mjs).
+3. Regenera los 4 PDFs:
+   ```bash
+   cd cv-pdf/generator
+   npm install
+   npm run generate
+   ```
+4. Revisa visualmente el resultado y haz commit de los PDFs actualizados.
 
 ## Archivos
 

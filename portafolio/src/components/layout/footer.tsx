@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { personalInfo } from "@/data/personal"
-import { Github, Linkedin, Send, Mail, Heart } from "lucide-react"
+import { Github, Send, Mail, Heart } from "lucide-react"
+import { LinkedInIcon } from "@/components/icons/linkedin-icon"
 
 
 const navLinks = [
@@ -21,7 +22,7 @@ export function Footer() {
 
   const socialLinks = [
     { icon: Github, url: personalInfo.social.github, label: "GitHub" },
-    { icon: Linkedin, url: personalInfo.social.linkedin, label: "LinkedIn" },
+    { icon: LinkedInIcon, url: personalInfo.social.linkedin, label: "LinkedIn" },
     { icon: Send, url: personalInfo.social.telegram, label: "Telegram" },
     { icon: Mail, url: personalInfo.social.email, label: "Email" },
   ]

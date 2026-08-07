@@ -6,7 +6,8 @@ import { SectionHeading } from "@/components/ui/section-heading"
 import { Reveal } from "@/components/ui/reveal"
 import { Button } from "@/components/ui/button"
 import { personalInfo } from "@/data/personal"
-import { Mail, Github, Linkedin, Send, MapPin, ArrowUpRight, MessageCircle, Phone } from "lucide-react"
+import { Mail, Github, Send, MapPin, ArrowUpRight, MessageCircle, Phone } from "lucide-react"
+import { LinkedInIcon } from "@/components/icons/linkedin-icon"
 
 export function ContactSection() {
   const t = useTranslations("contact")
@@ -17,7 +18,7 @@ export function ContactSection() {
     { icon: Mail, label: "Email", value: personalInfo.email, href: personalInfo.social.email, internal: true },
     { icon: MessageCircle, label: "WhatsApp", value: personalInfo.phone, href: personalInfo.social.whatsapp },
     { icon: Phone, label: t("phone"), value: personalInfo.phone, href: personalInfo.social.phone, internal: true },
-    { icon: Linkedin, label: "LinkedIn", value: "richard-matos-arderí", href: personalInfo.social.linkedin },
+    { icon: LinkedInIcon, label: "LinkedIn", value: t("viewProfile"), href: personalInfo.social.linkedin },
     { icon: Github, label: "GitHub", value: "Pol4720", href: personalInfo.social.github },
     { icon: Send, label: "Telegram", value: "@Pol4720", href: personalInfo.social.telegram },
   ]

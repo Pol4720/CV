@@ -126,7 +126,8 @@
       "messagePlaceholder": "Tell me how I can help...",
       "send": "Send message"
     },
-    "phone": "Phone"
+    "phone": "Phone",
+    "viewProfile": "View profile"
   },
   "footer": {
     "blurb": "Computer Scientist specialized in Data Science, ML and AI applied to public health.",

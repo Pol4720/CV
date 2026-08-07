@@ -5,7 +5,8 @@ import { useTranslations, useLocale } from "next-intl"
 import { Button } from "@/components/ui/button"
 import { personalInfo } from "@/data/personal"
 import { marqueeTech } from "@/data/skills"
-import { ArrowDown, Github, Linkedin, Send, Mail, MapPin, Sparkles } from "lucide-react"
+import { ArrowDown, Github, Send, Mail, MapPin, Sparkles } from "lucide-react"
+import { LinkedInIcon } from "@/components/icons/linkedin-icon"
 
 export function HeroSection() {
   const t = useTranslations("hero")
@@ -82,7 +83,7 @@ export function HeroSection() {
               <div className="flex items-center gap-2 ml-1">
                 {[
                   { href: personalInfo.social.github, icon: Github, label: "GitHub" },
-                  { href: personalInfo.social.linkedin, icon: Linkedin, label: "LinkedIn" },
+                  { href: personalInfo.social.linkedin, icon: LinkedInIcon, label: "LinkedIn" },
                   { href: personalInfo.social.telegram, icon: Send, label: "Telegram" },
                 ].map(({ href, icon: Icon, label }) => (
                   <a
